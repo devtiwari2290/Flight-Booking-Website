@@ -26,7 +26,7 @@ const Header = () => {
           {isMenuOpen ? <LiaTimesSolid /> : <SlMenu />}
         </button>
 
-        <img className="w-[110px] lg:w-[130px] mr-11" src={logo} alt="Logo" />
+        <img className="w-[110px] lg:w-[130px] mr-9" src={logo} alt="Logo" />
 
         {/* Main nav items */}
         <div
