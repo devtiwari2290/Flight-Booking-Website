@@ -295,12 +295,16 @@ const Flights = () => {
                   <input
                     type="date"
                     class="w-full border border-gray-300 rounded-md p-4 lg:text-base text-xs"
+                    id="date-input"
+                    placeholder="Arrival"
                   />
                 </div>
                 <div class="relative">
                   <input
                     type="date"
                     class="w-full border  border-gray-300 rounded-md p-4 lg:text-base  text-xs"
+                    id="date-input"
+                    placeholder="Departure "
                   />
                 </div>
               </div>

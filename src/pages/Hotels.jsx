@@ -412,6 +412,8 @@ const Hotels = () => {
                           <input
                             type="date"
                             class="w-full border rounded-md p-4"
+                            id="date-input"
+                            placeholder="Select Date"
                           />
                         </div>
                       </div>
