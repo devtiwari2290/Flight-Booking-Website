@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.webp";
 import flag from "../assets/flag.webp";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaUmbrellaBeach, FaPlane, FaRegUserCircle } from "react-icons/fa";
 import { LiaTimesSolid } from "react-icons/lia";
 import { SlMenu } from "react-icons/sl";
 import { RiHotelFill, RiHome2Fill } from "react-icons/ri";
 import { IoCarSharp } from "react-icons/io5";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -34,7 +33,9 @@ const Header = () => {
           )}
         </div>
 
-        <img className="w-[110px] lg:w-[130px] mr-9" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="w-[110px] lg:w-[130px] mr-9" src={logo} alt="Logo" />{" "}
+        </Link>
 
         {/* Main nav items */}
         <div
