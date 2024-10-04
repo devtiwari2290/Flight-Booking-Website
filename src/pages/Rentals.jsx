@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import rentalbanner from "../assets/banner/banner.webp";
 import subscribe from "../assets/banner/banner-6.webp";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
@@ -194,6 +194,18 @@ const articles = [
 ];
 
 const Rentals = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(new Date()); // Initialize date value with current date
+
+  const toggleCalendar = () => {
+    setIsOpen(!isOpen); // Toggle open/close state
+  };
+
+  const onChange = (date) => {
+    setValue(date); // Update the selected date
+    setIsOpen(false); // Close the calendar after date selection
+  };
+
   var settings = {
     dots: true,
     infinite: false,
@@ -383,16 +395,24 @@ const Rentals = () => {
                     </div>
 
                     {/* <!-- Date Picker --> */}
-                    <div class="">
-                      <div class="form-group">
-                        <label class="block mb-1">Choose Date</label>
-                        <div class="relative">
-                          <input
-                            type="date"
-                            class="w-full border rounded-md p-4"
-                            id="date-input"
-                            placeholder="Select Date"
-                          />
+
+                    <div className="date-picker-component">
+                      <div className="form-group">
+                        <label className="block mb-1">Choose Date</label>
+                        <div className="relative w-full border py-4 bg-white rounded-md text-center">
+                          <button
+                            type="button"
+                            className="date-picker-toggle-button"
+                            onClick={toggleCalendar}
+                          >
+                            {value ? value.toLocaleDateString() : "Select Date"}
+                          </button>
+
+                          {isOpen && (
+                            <div className="calendar-container absolute">
+                              <Calendar onChange={onChange} value={value} />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

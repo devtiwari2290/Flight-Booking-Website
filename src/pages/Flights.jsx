@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import flightbanner from "../assets/banner/banner-7.webp";
 import { FaUser } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -148,6 +148,18 @@ const Flights = () => {
       rating: "(142 Reviews)",
     },
   ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(new Date()); // Initialize date value with current date
+
+  const toggleCalendar = () => {
+    setIsOpen(!isOpen); // Toggle open/close state
+  };
+
+  const onChange = (date) => {
+    setValue(date); // Update the selected date
+    setIsOpen(false); // Close the calendar after date selection
+  };
 
   return (
     <div className="w-full min-h-[100vh] pt-16">
