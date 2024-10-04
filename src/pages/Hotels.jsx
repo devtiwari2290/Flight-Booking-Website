@@ -251,17 +251,6 @@ const domestic = [
 ];
 
 const Hotels = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(new Date()); // Initialize date value with current date
-
-  const toggleCalendar = () => {
-    setIsOpen(!isOpen); // Toggle open/close state
-  };
-
-  const onChange = (date) => {
-    setValue(date); // Update the selected date
-    setIsOpen(false); // Close the calendar after date selection
-  };
   var settings = {
     dots: true,
     infinite: false,
@@ -420,20 +409,12 @@ const Hotels = () => {
                     <div className="date-picker-component">
                       <div className="form-group">
                         <label className="block mb-1">Choose Date</label>
-                        <div className="relative w-full border py-4 bg-white rounded-md text-center">
-                          <button
-                            type="button"
-                            className="date-picker-toggle-button"
-                            onClick={toggleCalendar}
-                          >
-                            {value ? value.toLocaleDateString() : "Select Date"}
-                          </button>
-
-                          {isOpen && (
-                            <div className="calendar-container absolute">
-                              <Calendar onChange={onChange} value={value} />
-                            </div>
-                          )}
+                        <div className="relative">
+                          <input
+                            type="date"
+                            className="w-full border rounded-md p-4 text-left bg-gray-50"
+                            placeholder="Select Date"
+                          />
                         </div>
                       </div>
                     </div>
