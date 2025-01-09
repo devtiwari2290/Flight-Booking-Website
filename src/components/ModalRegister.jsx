@@ -28,7 +28,7 @@ const ModalRegister = ({ onClose }) => {
       className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center px-4"
     >
       <div
-        className={`bg-white w-full max-w-lg h-[95%] md:h-auto p-5 rounded-xl flex flex-col gap-5 ${
+        className={`bg-white w-full max-w-lg max-h-screen md:h-auto p-5 rounded-xl flex flex-col gap-5 ${
           isClosing ? "modal-fade-out" : "modal-fade-in"
         }`}
       >
@@ -90,7 +90,7 @@ const ModalRegister = ({ onClose }) => {
           </form>
 
           {/* Alternative Sign-In Methods */}
-          <div className="mt-7 lg:mt-5">
+          <div className="mt-10 lg:mt-5">
             <h1 className="text-sm font-semibold text-gray-500 text-center">
               Sign In with More Methods
             </h1>
