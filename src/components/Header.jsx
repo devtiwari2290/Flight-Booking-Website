@@ -7,7 +7,15 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { SlMenu } from "react-icons/sl";
 import { RiHotelFill, RiHome2Fill } from "react-icons/ri";
 import { IoCarSharp } from "react-icons/io5";
+import ModalRegister from "./ModalRegister";
+import ModalFlag from "./ModalFlag";
 const Header = () => {
+  // Register Modal
+  const [showModal, setShowModal] = useState(false);
+
+  // Flag Modal
+  const [showModalFlag, setShowModalFlag] = useState(false);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar fixed z-[10] bg-white flex justify-between px-3 md:px-16 items-center w-full h-[10vh]">
+      <nav className=" fixed z-[10] bg-white flex justify-between px-3 md:px-16 items-center w-full h-[10vh]">
         {/* Hamburger icon for mobile */}
         <div className="lg:hidden">
           {isMenuOpen ? (
@@ -111,13 +119,25 @@ const Header = () => {
           </button>
 
           <button className="text-black bg-[#EBEFF2] px-3 lg:px-4  py-[13px] lg:py-4  rounded">
-            <img className="w-[20px]" src={flag} alt="Flag" />
+            <img
+              className="w-[20px]"
+              src={flag}
+              alt="Flag"
+              onClick={() => setShowModalFlag(true)}
+            />
           </button>
+          {showModalFlag && (
+            <ModalFlag onClose={() => setShowModalFlag(false)} />
+          )}
 
-          <button className="text-white text-base font-semibold lg:flex items-center gap-2 bg-[#384BFF] px-4  py-[15px] lg:py-4  rounded">
+          <button
+            className="text-white text-base font-semibold lg:flex items-center gap-2 bg-[#384BFF] px-4  py-[15px] lg:py-4  rounded"
+            onClick={() => setShowModal(true)}
+          >
             <FaRegUserCircle className="text-white" />
             {<span className="hidden md:block">Sign In / Register</span>}
           </button>
+          {showModal && <ModalRegister onClose={() => setShowModal(false)} />}
         </div>
       </nav>
 
