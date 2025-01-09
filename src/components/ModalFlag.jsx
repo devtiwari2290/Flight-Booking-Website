@@ -9,7 +9,7 @@ const ModalFlag = ({ onClose }) => {
     setIsClosing(true); // Trigger the fade-out animation
     setTimeout(() => {
       onClose(); // Call the parent onClose after the animation ends
-    }, 300); // Match this timeout to the animation duration (0.4s)
+    }, 400); // Match this timeout to the animation duration (0.4s)
   };
 
   const closeModal = (e) => {

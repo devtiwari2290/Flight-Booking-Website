@@ -9,12 +9,16 @@ import { RiHotelFill, RiHome2Fill } from "react-icons/ri";
 import { IoCarSharp } from "react-icons/io5";
 import ModalRegister from "./ModalRegister";
 import ModalFlag from "./ModalFlag";
+import ModalCurrency from "./ModalCurrency";
 const Header = () => {
   // Register Modal
   const [showModal, setShowModal] = useState(false);
 
   // Flag Modal
   const [showModalFlag, setShowModalFlag] = useState(false);
+
+  // Currency Modal
+  const [showModalCurrency, setShowModalCurrency] = useState(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,7 +32,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className=" fixed z-[10] bg-white flex justify-between px-3 md:px-16 items-center w-full h-[10vh]">
+      <nav className=" fixed z-[10] bg-white flex justify-between px-3 md:px-16 items-center w-full h-[10vh] ">
         {/* Hamburger icon for mobile */}
         <div className="lg:hidden">
           {isMenuOpen ? (
@@ -48,7 +52,7 @@ const Header = () => {
         {/* Main nav items */}
         <div
           className={`${
-            isMenuOpen ? "flex" : "hidden"
+            isMenuOpen ? "flex modal-fade-in" : "hidden"
           } md:flex flex-col md:flex-row gap-4 md:gap-10 lg:items-center absolute md:static top-[10vh] left-0 pl-12 lg:pl-0 w-full md:w-auto bg-white  md:bg-white p-4 md:p-0`}
         >
           <NavLink
@@ -114,9 +118,15 @@ const Header = () => {
 
         {/* Right-side buttons */}
         <div className="flex justify-center gap-2 lg:gap-2 items-center">
-          <button className="text-black text-sm font-semibold bg-[#EBEFF2] px-3 lg:px-4 py-[13px] lg:py-4 rounded">
+          <button
+            className="text-black text-sm font-semibold bg-[#EBEFF2] px-3 lg:px-4 py-[13px] lg:py-4 rounded"
+            onClick={() => setShowModalCurrency(true)}
+          >
             INR
           </button>
+          {showModalCurrency && (
+            <ModalCurrency onClose={() => setShowModalCurrency(false)} />
+          )}
 
           <button className="text-black bg-[#EBEFF2] px-3 lg:px-4  py-[13px] lg:py-4  rounded">
             <img

@@ -31,11 +31,11 @@
   }
   
   .modal-fade-in {
-    animation: fadeInFromTop 0.3s ease-in;
+    animation: fadeInFromTop 0.4s ease-in;
   }
   
   .modal-fade-out {
-    animation: fadeOutToTop 0.3s ease-out;
+    animation: fadeOutToTop 0.4s ease-out;
   }
   
 
