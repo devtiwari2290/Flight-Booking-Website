@@ -1,13 +1,41 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SquareX } from "lucide-react";
 import { FaFacebook, FaWhatsapp, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 
 const ModalRegister = ({ onClose }) => {
+  const navigate = useNavigate();
   const modalRef = useRef(null);
   const [isClosing, setIsClosing] = useState(false); // Tracks if the modal is closing
 
+  // Form Data
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    navigate("/");
+    onClose();
+    console.log(formData);
+
+    // Reset form data
+    setFormData({
+      username: "",
+      password: "",
+    });
+  };
   const handleClose = () => {
     setIsClosing(true); // Trigger the fade-out animation
     setTimeout(() => {
@@ -43,26 +71,33 @@ const ModalRegister = ({ onClose }) => {
 
         {/* Form Section */}
         <div className="mt-0 md:mt-3 p-3">
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5" onSubmit={handleSumbit}>
             <input
               type="text"
-              placeholder="User Name"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-blue-300"
+              required
             />
 
             <input
               type="password"
+              name="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
               className="w-full border border-gray-300 p-4 rounded-lg focus:outline-blue-300"
+              required
             />
-            <Link to={"/"} onClick={onClose}>
-              <button
-                type="submit"
-                className="bg-red-600 text-white w-full py-4 rounded-lg font-bold text-center"
-              >
-                Log In
-              </button>
-            </Link>
+
+            <button
+              type="submit"
+              className="bg-red-600 text-white w-full py-4 rounded-lg font-bold text-center"
+            >
+              Log In
+            </button>
 
             <div className="flex justify-between items-center text-sm">
               <div>
